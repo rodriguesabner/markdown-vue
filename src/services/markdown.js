@@ -1,4 +1,4 @@
-export function FormatMarkdownService(refElement, index) {
+function FormatMarkdownService(refElement, index) {
     if (refElement == null) {
         setTimeout(() => {
             formatSingleItem(index);
@@ -58,3 +58,5 @@ function is_aplhanumeric(c) {
     const x = c.charCodeAt();
     return ((x >= 65 && x <= 90) || (x >= 97 && x <= 122) || (x >= 48 && x <= 57));
 }
+
+export default FormatMarkdownService;

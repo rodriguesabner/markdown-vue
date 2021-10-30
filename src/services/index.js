@@ -1,4 +1,4 @@
-import {FormatMarkdownService} from "./markdown";
+import FormatMarkdownService from "./markdown";
 
 export {
     FormatMarkdownService

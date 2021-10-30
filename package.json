@@ -24,7 +24,7 @@
     "vue-template-compiler": "^2.6.11"
   },
   "description": "Componente de conversor para markdown do wppconnect",
-  "repository": "https://github.com/rodriguesabner/markdown-vue.git",
+  "repository": "https://github.com/rodriguesabner/wppconnect-markdown.git",
   "author": "Abner Rodrigues <abnerodrigs@gmail.com>",
   "license": "MIT"
 }
