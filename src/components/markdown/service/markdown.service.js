@@ -1,13 +1,3 @@
-function FormatMarkdownService(refElement, index) {
-    if (refElement == null) {
-        setTimeout(() => {
-            formatSingleItem(index);
-        }, 10);
-    } else {
-        formatAllItems(refElement);
-    }
-}
-
 function formatSingleItem(index) {
     const element = document.getElementById(index);
     formatElement(element);
@@ -59,4 +49,7 @@ function is_aplhanumeric(c) {
     return ((x >= 65 && x <= 90) || (x >= 97 && x <= 122) || (x >= 48 && x <= 57));
 }
 
-export default FormatMarkdownService;
+export {
+    formatSingleItem,
+    formatAllItems,
+}
