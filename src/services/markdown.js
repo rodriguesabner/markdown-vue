@@ -1,6 +1,8 @@
-export default function formatWppMarkdown(refElement, index) {
+export function FormatMarkdown(refElement, index) {
     if (refElement == null) {
-        formatSingleItem(index);
+        setTimeout(() => {
+            formatSingleItem(index);
+        }, 10);
     } else {
         formatAllItems(refElement);
     }
