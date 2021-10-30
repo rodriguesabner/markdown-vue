@@ -1,35 +1,43 @@
-export default function formatWppMarkdown(refElement) {
-    if (refElement != null) {
-        refElement.map((elem, index) => {
-            console.log(elem, index);
-            let format = elem.innerText;
-
-            format = whatsappStyles(format, "_", "<i>", "</i>");
-            format = whatsappStyles(format, "*", "<b>", "</b>");
-            format = whatsappStyles(format, "~", "<s>", "</s>");
-            format = format.replace(/\n/gi, "<br>");
-
-            elem.innerHTML = format;
-            // whatsappLinkStyle
-        });
+export default function formatWppMarkdown(refElement, index) {
+    if (refElement == null) {
+        formatSingleItem(index);
+    } else {
+        formatAllItems(refElement);
     }
 }
 
-function is_aplhanumeric(c) {
-    var x = c.charCodeAt();
-    return ((x >= 65 && x <= 90) || (x >= 97 && x <= 122) || (x >= 48 && x <= 57)) ? true : false;
+function formatSingleItem(index) {
+    const element = document.getElementById(index);
+    formatElement(element);
 }
 
-function whatsappStyles(format, wildcard, opTag, clTag) {
+function formatAllItems(elementList) {
+    for (const element of elementList) {
+        formatElement(element);
+    }
+}
+
+function formatElement(element) {
+    let format = element.innerText;
+
+    format = applyWhatsappStyles(format, "_", "<i>", "</i>");
+    format = applyWhatsappStyles(format, "*", "<b>", "</b>");
+    format = applyWhatsappStyles(format, "~", "<s>", "</s>");
+    format = format.replace(/\n/gi, "<br>");
+
+    element.innerHTML = format;
+}
+
+function applyWhatsappStyles(format, wildcard, opTag, clTag) {
     let indices = [];
-    for (var i = 0; i < format.length; i++) {
+    for (let i = 0; i < format.length; i++) {
         if (format[i] === wildcard) {
             if (indices.length % 2)
-                (format[i - 1] == " ") ? null : ((typeof (format[i + 1]) == "undefined") ? indices.push(i) : (is_aplhanumeric(format[i + 1]) ? null : indices.push(i)));
+                (format[i - 1] === " ") ? null : ((typeof (format[i + 1]) == "undefined") ? indices.push(i) : (is_aplhanumeric(format[i + 1]) ? null : indices.push(i)));
             else
-                (typeof (format[i + 1]) == "undefined") ? null : ((format[i + 1] == " ") ? null : (typeof (format[i - 1]) == "undefined") ? indices.push(i) : ((is_aplhanumeric(format[i - 1])) ? null : indices.push(i)));
+                (typeof (format[i + 1]) == "undefined") ? null : ((format[i + 1] === " ") ? null : (typeof (format[i - 1]) == "undefined") ? indices.push(i) : ((is_aplhanumeric(format[i - 1])) ? null : indices.push(i)));
         } else {
-            (format[i].charCodeAt() == 10 && indices.length % 2) ? indices.pop() : null;
+            (format[i].charCodeAt() === 10 && indices.length % 2) ? indices.pop() : null;
         }
     }
     (indices.length % 2) ? indices.pop() : null;
@@ -42,4 +50,9 @@ function whatsappStyles(format, wildcard, opTag, clTag) {
         e += (t.length - 1);
     });
     return format;
+}
+
+function is_aplhanumeric(c) {
+    const x = c.charCodeAt();
+    return ((x >= 65 && x <= 90) || (x >= 97 && x <= 122) || (x >= 48 && x <= 57));
 }
