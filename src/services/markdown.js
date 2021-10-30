@@ -1,4 +1,4 @@
-export function FormatMarkdown(refElement, index) {
+export function FormatMarkdownService(refElement, index) {
     if (refElement == null) {
         setTimeout(() => {
             formatSingleItem(index);

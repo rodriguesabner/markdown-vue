@@ -1,6 +1,6 @@
 {
-  "name": "mardown-example",
-  "version": "0.1.0",
+  "name": "wppconnect-markdown",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -10,6 +10,7 @@
   "main": "index.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "release-it": "^14.11.6",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -20,5 +21,9 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "Componente de conversor para markdown do wppconnect",
+  "repository": "https://github.com/rodriguesabner/markdown-vue.git",
+  "author": "Abner Rodrigues <abnerodrigs@gmail.com>",
+  "license": "MIT"
 }
